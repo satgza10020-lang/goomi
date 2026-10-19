@@ -436,46 +436,49 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
       body: pages[_currentIndex],
 
       // เมนูนำทางด้านล่าง (BottomNavigationBar) 5 หน้าจอ
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: _currentIndex,
-        onDestinationSelected: (idx) => setState(() => _currentIndex = idx),
-        backgroundColor: const Color(0xFF0F172A), // Dark slate matching frame
-        elevation: 4,
-        indicatorColor: const Color(0xFF4F46E5).withValues(alpha: 0.22),
-        height: 62,
-        labelTextStyle: WidgetStateProperty.resolveWith((states) {
-          if (states.contains(WidgetState.selected)) {
-            return const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 10);
-          }
-          return const TextStyle(color: Color(0xFF94A3B8), fontSize: 10);
-        }),
-        destinations: const [
-          NavigationDestination(
-            icon: Icon(Icons.dashboard_outlined, color: Color(0xFF94A3B8), size: 20),
-            selectedIcon: Icon(Icons.dashboard_rounded, color: Colors.white, size: 20),
-            label: 'แดชบอร์ด',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.history_outlined, color: Color(0xFF94A3B8), size: 20),
-            selectedIcon: Icon(Icons.history_rounded, color: Colors.white, size: 20),
-            label: 'ประวัติ',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.badge_outlined, color: Color(0xFF94A3B8), size: 20),
-            selectedIcon: Icon(Icons.badge_rounded, color: Colors.white, size: 20),
-            label: 'พนักงาน',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.analytics_outlined, color: Color(0xFF94A3B8), size: 20),
-            selectedIcon: Icon(Icons.analytics_rounded, color: Colors.white, size: 20),
-            label: 'สถิติ',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.people_alt_outlined, color: Color(0xFF94A3B8), size: 20),
-            selectedIcon: Icon(Icons.people_alt_rounded, color: Colors.white, size: 20),
-            label: 'ผู้จัดทำ',
-          ),
-        ],
+      bottomNavigationBar: SafeArea(
+        top: false,
+        child: NavigationBar(
+          selectedIndex: _currentIndex,
+          onDestinationSelected: (idx) => setState(() => _currentIndex = idx),
+          backgroundColor: const Color(0xFF0F172A), // Dark slate matching frame
+          elevation: 4,
+          indicatorColor: const Color(0xFF4F46E5).withValues(alpha: 0.22),
+          height: 60,
+          labelTextStyle: WidgetStateProperty.resolveWith((states) {
+            if (states.contains(WidgetState.selected)) {
+              return const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 10);
+            }
+            return const TextStyle(color: Color(0xFF94A3B8), fontSize: 10);
+          }),
+          destinations: const [
+            NavigationDestination(
+              icon: Icon(Icons.dashboard_outlined, color: Color(0xFF94A3B8), size: 20),
+              selectedIcon: Icon(Icons.dashboard_rounded, color: Colors.white, size: 20),
+              label: 'แดชบอร์ด',
+            ),
+            NavigationDestination(
+              icon: Icon(Icons.history_outlined, color: Color(0xFF94A3B8), size: 20),
+              selectedIcon: Icon(Icons.history_rounded, color: Colors.white, size: 20),
+              label: 'ประวัติ',
+            ),
+            NavigationDestination(
+              icon: Icon(Icons.badge_outlined, color: Color(0xFF94A3B8), size: 20),
+              selectedIcon: Icon(Icons.badge_rounded, color: Colors.white, size: 20),
+              label: 'พนักงาน',
+            ),
+            NavigationDestination(
+              icon: Icon(Icons.analytics_outlined, color: Color(0xFF94A3B8), size: 20),
+              selectedIcon: Icon(Icons.analytics_rounded, color: Colors.white, size: 20),
+              label: 'สถิติ',
+            ),
+            NavigationDestination(
+              icon: Icon(Icons.people_alt_outlined, color: Color(0xFF94A3B8), size: 20),
+              selectedIcon: Icon(Icons.people_alt_rounded, color: Colors.white, size: 20),
+              label: 'ผู้จัดทำ',
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -657,75 +660,103 @@ class DashboardScreen extends StatelessWidget {
                   side: const BorderSide(color: Color(0xFFE2E8F0)),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 6.0, vertical: 12.0),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      _buildQuickAction(
-                        icon: Icons.badge_rounded,
-                        label: 'จัดการพนักงาน',
-                        color: const Color(0xFF059669),
-                        onTap: () => onNavigate(2),
+                      Expanded(
+                        child: _buildQuickAction(
+                          icon: Icons.badge_rounded,
+                          label: 'จัดการพนักงาน',
+                          color: const Color(0xFF059669),
+                          onTap: () => onNavigate(2),
+                        ),
                       ),
-                      _buildQuickAction(
-                        icon: Icons.search_rounded,
-                        label: 'ค้นหาประวัติ',
-                        color: const Color(0xFF0284C7),
-                        onTap: () => onNavigate(1),
+                      Expanded(
+                        child: _buildQuickAction(
+                          icon: Icons.search_rounded,
+                          label: 'ค้นหาประวัติ',
+                          color: const Color(0xFF0284C7),
+                          onTap: () => onNavigate(1),
+                        ),
                       ),
-                      _buildQuickAction(
-                        icon: Icons.analytics_rounded,
-                        label: 'รายงานสถิติ',
-                        color: const Color(0xFF6366F1),
-                        onTap: () => onNavigate(3),
+                      Expanded(
+                        child: _buildQuickAction(
+                          icon: Icons.analytics_rounded,
+                          label: 'รายงานสถิติ',
+                          color: const Color(0xFF6366F1),
+                          onTap: () => onNavigate(3),
+                        ),
                       ),
-                      _buildQuickAction(
-                        icon: Icons.info_outline_rounded,
-                        label: 'ผู้จัดทำ',
-                        color: const Color.fromARGB(255, 146, 148, 11),
-                        onTap: () => onNavigate(4),
+                      Expanded(
+                        child: _buildQuickAction(
+                          icon: Icons.info_outline_rounded,
+                          label: 'ผู้จัดทำ',
+                          color: const Color(0xFFD97706),
+                          onTap: () => onNavigate(4),
+                        ),
                       ),
                     ],
                   ),
                 ),
               ),
 
-              const SizedBox(height: 20),
+              const SizedBox(height: 18),
 
               // 4. RECENT ACTIVITY LIST (แสดง 6 รายการล่าสุด)
               Card(
                 elevation: 0,
-                color: const Color.fromARGB(255, 255, 255, 255),
+                color: Colors.white,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(16),
-                  side: const BorderSide(color: Color.fromARGB(255, 0, 0, 0)),
+                  side: const BorderSide(color: Color(0xFFE2E8F0)),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(20.0),
+                  padding: const EdgeInsets.all(14.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Row(
-                            children: [
-                              Icon(Icons.bolt_rounded, color: Color.fromARGB(255, 250, 227, 21)),
-                              SizedBox(width: 10),
-                              Text(
-                                'รายการแตะบัตรล่าสุด (Live Feed)',
-                                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Color(0xFF1E293B)),
-                              ),
-                            ],
+                          const Expanded(
+                            child: Row(
+                              children: [
+                                Icon(Icons.bolt_rounded, color: Color(0xFFF59E0B), size: 20),
+                                SizedBox(width: 6),
+                                Expanded(
+                                  child: Text(
+                                    'แตะบัตรล่าสุด (Live Feed)',
+                                    style: TextStyle(fontSize: 14.5, fontWeight: FontWeight.bold, color: Color(0xFF1E293B)),
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                          TextButton.icon(
-                            icon: const Icon(Icons.arrow_forward_rounded, size: 16),
-                            label: const Text('ดูทั้งหมด'),
+                          TextButton(
+                            style: TextButton.styleFrom(
+                              padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
+                              minimumSize: Size.zero,
+                              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                            ),
                             onPressed: () => onNavigate(1),
+                            child: const Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  'ดูทั้งหมด',
+                                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: Color(0xFF4F46E5)),
+                                ),
+                                SizedBox(width: 2),
+                                Icon(Icons.arrow_forward_ios_rounded, size: 10, color: Color(0xFF4F46E5)),
+                              ],
+                            ),
                           ),
                         ],
                       ),
-                      const Divider(color: Color.fromARGB(255, 74, 74, 74)),
+                      const SizedBox(height: 6),
+                      const Divider(color: Color(0xFFF1F5F9)),
                       if (todayLogs.isEmpty)
                         const Padding(
                           padding: EdgeInsets.symmetric(vertical: 32),
@@ -748,7 +779,7 @@ class DashboardScreen extends StatelessWidget {
                             final timestamp = item['timestamp'] ?? 0;
 
                             final formattedTime = timestamp != 0
-                                ? DateFormat('HH:mm:ss · dd/MM/yy').format(
+                                ? DateFormat('HH:mm:ss · dd/MM').format(
                                     DateTime.fromMillisecondsSinceEpoch(
                                       timestamp > 10000000000 ? timestamp : timestamp * 1000,
                                     ),
@@ -933,9 +964,9 @@ class DashboardScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              _buildLegend(const Color(0xFF059669), 'ตรงเวลา', '$onTime คน'),
-              _buildLegend(const Color(0xFFD97706), 'มาสาย', '$late คน'),
-              _buildLegend(const Color(0xFF0284C7), 'ออกงาน', '$checkOut คน'),
+              _buildLegend(const Color(0xFF059669), 'ตรงเวลา', '$onTime ครั้ง'),
+              _buildLegend(const Color(0xFFD97706), 'มาสาย', '$late ครั้ง'),
+              _buildLegend(const Color(0xFF0284C7), 'ออกงาน', '$checkOut ครั้ง'),
             ],
           ),
         ],
@@ -965,20 +996,27 @@ class DashboardScreen extends StatelessWidget {
       onTap: onTap,
       borderRadius: BorderRadius.circular(12),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 6),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             Container(
-              width: 42,
-              height: 42,
+              width: 38,
+              height: 38,
               decoration: BoxDecoration(
-                color: color.withValues(alpha: 0.1),
+                color: color.withValues(alpha: 0.12),
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: Icon(icon, color: color, size: 22),
+              child: Icon(icon, color: color, size: 20),
             ),
-            const SizedBox(height: 6),
-            Text(label, style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: Color(0xFF334155))),
+            const SizedBox(height: 5),
+            Text(
+              label,
+              style: const TextStyle(fontSize: 10.5, fontWeight: FontWeight.w600, color: Color(0xFF334155)),
+              textAlign: TextAlign.center,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
           ],
         ),
       ),
