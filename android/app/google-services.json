@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "708380482219",
+    "firebase_url": "https://check-in2-cc7a2-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "check-in2-cc7a2",
+    "storage_bucket": "check-in2-cc7a2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:708380482219:android:41511c47bdf675eb7275ee",
+        "android_client_info": {
+          "package_name": "com.example.checkin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4IONL_VoCkvGWwh5ql3nYQllQq2V2ldU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
