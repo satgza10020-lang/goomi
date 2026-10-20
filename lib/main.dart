@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'ระบบบันทึกเวลาเข้า-ออกงาน (RFID)',
+      title: 'goomi - ระบบบันทึกเวลาเข้า-ออกงาน',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
@@ -365,7 +365,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                   ),
                   const SizedBox(height: 12),
                   const Text(
-                    'Smart RFID System',
+                    'goomi',
                     style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   const Text(
@@ -422,7 +422,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                   Icon(Icons.check_circle_rounded, color: Color(0xFF059669), size: 16),
                   SizedBox(width: 8),
                   Text(
-                    'Smart RFID Attendance System',
+                    'goomi · Smart RFID Attendance System',
                     style: TextStyle(fontSize: 11, color: Color(0xFF64748B), fontWeight: FontWeight.w500),
                   ),
                 ],
@@ -532,7 +532,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
       case 4:
         return 'ข้อมูลผู้จัดทำ';
       default:
-        return 'RFID System';
+        return 'goomi';
     }
   }
 }
@@ -2331,7 +2331,7 @@ class TeamAboutScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Smart RFID Attendance',
+                      'goomi (Smart RFID Attendance)',
                       style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(height: 4),

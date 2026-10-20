@@ -1,6 +1,6 @@
 {
-    "name": "rfid_web_dashboard",
-    "short_name": "rfid_web_dashboard",
+    "name": "goomi",
+    "short_name": "goomi",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

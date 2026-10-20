@@ -1,4 +1,4 @@
-# rfid_web_dashboard
+# goomi - Smart RFID Attendance System
 
 A new Flutter project.
 
